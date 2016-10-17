@@ -1,0 +1,13 @@
+[Unit]
+Description=linkloopd linkloop_reply utility
+Wants=network.target
+After=network.target
+ConditionFileIsExecutable=/usr/bin/linkloop_reply
+ConditionFileIsExecutable=/usr/bin/lanscan
+
+[Service]
+PIDFile=/var/run/linkloop_reply.pid
+ExecStart=/usr/bin/linkloop_reply `/usr/bin/lanscan -o`
+
+[Install]
+WantedBy=multi-user.target
